@@ -7,21 +7,10 @@ access_token_secret = "kxjbCgdauTqlyUwqlnxwdDltC2XzN7ucbV43nG7tdP6GF"
 api_key = "uxpyqQjhlBpv96WLJHMrtUjb0"
 api_secret = "62DBVhEeiI9EqaZOLlEY8vt7HuC5V5wu4mbKjmKjykxKa26HoM"
 file="/home/daanish/Desktop/Project/MachineLearning/Twitter/files/tweetscyclone.csv"
-# file="/home/daanish/Desktop/Project/MachineLearning/Twitter/files/tweetsphethai.csv"
-# file="/home/daanish/Desktop/Project/MachineLearning/Twitter/files/tweetscy.csv"
-# startdate="2018-08-01"
-# enddate="2018-09-30"
-# query="#KeralaFloods2018"
-# q="{0} since:{1} until:{2}".format(query,startdate,enddate)
-# hashtag="#Elections2018"
-# hashtag="#CyclonePhethai"
 hashtag="#CyclonePhethai"
 # hashtag="#Phethai"
 maxitems=999999999	
 row=["SNo","Time","Location","Text"]
-# since:2018-12-16 14:50:43
-
-# CyclonePhethai since:2018-12-16 20:01:50
 
 class Read:
 	
