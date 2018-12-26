@@ -6,8 +6,6 @@ import string
 import spacy
 from spacy.tokens import Doc,Span,Token
 from spacymoji import Emoji
-# import nltk
-# nltk.download("stopwords")
 from nltk.corpus import stopwords
 
 stopwords = stopwords.words('english')
@@ -24,25 +22,13 @@ dict=("Location","Text")
 class Preprocessing:
 
     def __init__(self,language="en"):
-        # df=pd.read_csv(path_from,usecols=[0,1,2,3],names=column_names,header=None,nrows=5)
         df=pd.read_csv(path_from,usecols=[0,1,2,3],names=column_names,header=None)
         # df=pd.read_csv(path_from,names=column_names,encoding="ISO-8859-1",header=None)
         self.language=language
-        # print(df.head())
-        # return
-        # Doc.set_extension(force=True)
-        # Doc.set_extension(self._entities, getter=self.iter_entities, force=True)
-        # Span.set_extension(force=True)
-        # Span.set_extension(self._entities, getter=self.iter_entities, force=True)
-        # Token.set_extension(force=True)
-        # Token.set_extension(self._entity_desc, getter=self.get_entity_desc, force=True)
-
         self.nlp=spacy.load("en_core_web_sm",disable=["parser"])
         self.nlp.add_pipe(Emoji(self.nlp),first=True)
 
         for key in dict:
-            # print(df[key])
-            # continue
             # print("Starting Language Conversion to {0} for {1}".format(language,key))
             # self.lang(df[key])
             # print("Done Language Conversion to {0} for {1}".format(language,key))
@@ -93,7 +79,6 @@ class Preprocessing:
     def remove_noise(self,texts):
         for i in range(len(texts)):
             print("Noise: ",i)
-            # print("Before: ",texts[i])
             # Hashtags
             texts.at[i]=re.sub(r"#[\w]*","",str(texts[i]))
 
@@ -118,7 +103,6 @@ class Preprocessing:
 
             # BackSlashes
             texts.at[i]=re.sub(r"\\[\w]*","",str(texts[i]))            
-            # print("After: ",texts[i])
         return
 
     # lemmatisation using spacy
