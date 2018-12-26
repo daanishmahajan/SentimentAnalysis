@@ -1,0 +1,72 @@
+Summary:
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Reasons for Inaccuracy:
+
+Data:
+There's not much activity on Twitter for this event, total tweets collected=2300
+We don't have the data for 18th when activity was maximum
+The data for 17th is incomplete therefore there is a drop in both the curves
+Couldn't get the test data for some disaster like event, test data contains 1000 tweets of each polarity and the tweets are random collected for our country
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Model Details:
+
+Multinomial Naive Bayes
+Features- Text Vectors
+Classes- Polarity
+
+Training Output:
+
+Best_Score:  0.8614034116127535
+Best_Params:  {'clf__alpha': 1, 'tfidf__norm': 'l2', 'tfidf__use_idf': False, 'vect__max_df': 0.5, 'vect__ngram_range': (1, 2)}
+
+Classification_Report_SplittedData:                
+	
+	precision    recall  f1-score   support
+
+           0     0.8963    0.8647    0.8802       340
+           1     0.8727    0.9137    0.8927       510
+           2     0.8622    0.8351    0.8484       382
+
+   micro avg     0.8758    0.8758    0.8758      1232
+   macro avg     0.8771    0.8712    0.8738      1232
+weighted avg     0.8759    0.8758    0.8755      1232
+
+Classification_Report_CompleteData:                
+		
+	precision    recall  f1-score   support
+
+           0     0.9516    0.9282    0.9398      1017
+           1     0.9395    0.9657    0.9524      1543
+           2     0.9376    0.9231    0.9303      1171
+
+   micro avg     0.9421    0.9421    0.9421      3731
+   macro avg     0.9429    0.9390    0.9408      3731
+weighted avg     0.9422    0.9421    0.9420      3731
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Activity v/s Time Plot
+
+Starting Time:  2018-12-17 01:48:50 
+
+As you move forward in the x direction time decreases by 1 hour at each step
+
+Regression Curve is a 10th degree curve with
+Coefficients of regression curve:  [-1.12205209e-17  1.39535034e-14 -7.46468496e-12  2.24559051e-09
+ -4.16660897e-07  4.91832619e-05 -3.67216702e-03  1.66414415e-01
+ -4.16013145e+00  4.54864240e+01 -6.32275364e+01]
+
+Pearson Correlation:  (correlation=-0.5745438706333175, pvalue=3.150480826513919e-205)
+Spearman Correlation:  (correlation=-0.6184244230190195, pvalue=1.7635843928654184e-246)
+kendalltau Correlation:  (correlation=-0.4461517571914295, pvalue=4.43506171470968e-229)
+
+Coefficients are negative because we are moving back in time
+If we move forward they will be positive showing that the parameters are Positively Correlated
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Sentiment Scores for different days
+
+As you move forward in x direction i.e to the previous day total activity and number of tweets of each polarity decreases which shows that sentiments of people are positively correlated with the event
+
+
