@@ -13,28 +13,23 @@ class Plot:
         df=pd.read_csv(file,names=column_names,header=None)
         df["Label"].replace("",np.nan,inplace=True)
         df.dropna(subset=["Label"],inplace=True)
-        # print(df.head())
-        # return
         self.draw_bar_time_label(df)
         self.draw_scatter_regressionline(df["Time"])
 
     def draw_bar_time_label(self,df):
         dates={}
-        # df["Label"].astype("int64")
         for i in range(len(df["Time"])):
             datetime_obj=datetime.strptime(df["Time"][i],"%Y-%m-%d %H:%M:%S")
             label=df["Label"][i]
             date="{0}-{1}-{2}".format(datetime_obj.strftime("%Y"),datetime_obj.strftime("%m"),datetime_obj.strftime("%d"))
             if date in dates.keys():
-                # print(date)
                 if label in dates[date].keys():
                     dates[date][label]+=1
                 else:
                     dates[date][label]=1
             else:
                 dates[date]={label:1}
-                # print(dates[date])
-
+                
         date=[]
         x=[i for i in range(1,len(dates)+1)]
         y=[]
@@ -51,8 +46,6 @@ class Plot:
                 else:
                     y[i].append(0)
 
-        # print(x)
-        # return
         ax=plt.subplot(111)
         bar1=ax.bar(np.array(x)-width,y[0],width,color="r")
         bar2=ax.bar(np.array(x),y[1],width,color="g")
@@ -104,7 +97,6 @@ class Plot:
             for j in range(length):
                 val+=xv*coeff[length-j-1]
                 xv*=x[i]
-            # print(val)
             ymax=max(val,ymax)
             y.append(val)
 
