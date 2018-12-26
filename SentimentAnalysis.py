@@ -17,11 +17,10 @@ column_names_test=["SNo","Time","Location","Text"]
 
 class Model:
     def __init__(self):
-        # self.load_params()
+        self.load_params()
         return
 
     def load_params(self):
-        # df=pd.read_csv(datafile,names=column_names_train,header=None,nrows=10)
         df=pd.read_csv(datafile,names=column_names_train,header=None)
         df["Text"].replace("",np.nan,inplace=True)
         df.dropna(subset=["Text"],inplace=True)
@@ -43,15 +42,11 @@ class Model:
         return
 
     def train_model(self,test_size=0.33,random_state=42,cv=10,score="f1_macro"):
-    # def train_model(self,test_size=0.33,random_state=42,cv=3,score="f1_macro"):
         try:
             if(os.path.getsize(modelfile)>0):
                 return
         except OSError as e:
             print(e)
-        # print(self.data.values)
-        # print(self.labels.values)
-        # x_train,x_test,y_train,y_test=train_test_split(self.data.values,self.labels.values,test_size=test_size,random_state=random_state)
         x_train,x_test,y_train,y_test=train_test_split(self.data,self.labels,test_size=test_size,random_state=random_state)
         clf=GridSearchCV(self.text_clf,self.tuned_parameters,cv=cv,scoring=score)
         clf.fit(x_train,y_train)
@@ -63,7 +58,6 @@ class Model:
         return
 
     def test_model(self,testfile=testfile):
-        # df=pd.read_csv(testfile,names=column_names_test,header=None,nrows=5)
         df=pd.read_csv(testfile,names=column_names_test,header=None)
         df["Text"].replace("",np.nan,inplace=True)
         df.dropna(subset=["Text"],inplace=True)
@@ -89,9 +83,9 @@ class Model:
 
 print("Loading Model")
 sentiment=Model()
-# print("Starting Training")
-# sentiment.train_model()
-# print("Finished Training")
+print("Starting Training")
+sentiment.train_model()
+print("Finished Training")
 print("Starting Testing")
 sentiment.test_model()
 print("Finished Testing")
